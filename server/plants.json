@@ -3,7 +3,7 @@
     { 
     "name": "Serviceberry",
     "id": 0,
-    "scientific-name": "Amelanchier spp.",
+    "scientificName": "Amelanchier spp.",
     "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/51YGLEFVWWL._SX466_.jpg",
     "season": "Early summer",
     "description": "Small tree bearing delicous berries with slight almond flavor"
@@ -11,7 +11,7 @@
     { 
     "name": "Wild leek",
     "id": 1,
-    "scientific-name": "Allium tricoccum",
+    "scientificName": "Allium tricoccum",
     "imageUrl": "http://www.whiteoaknursery.biz/seed_prop/Allium_tricocum_plant.jpg",
     "season": "Mid spring",
     "description": "Bright green herbaceous perrenial plant with delicious edible leaves and bulb"
@@ -19,7 +19,7 @@
     { 
     "name": "Lions mane",
     "id": 2,
-    "scientific-name": "Hericium erinaceus",
+    "scientificName": "Hericium erinaceus",
     "imageUrl": "https://www.healthline.com/hlcmsresource/images/AN_images/lions-mane-mushroom-1296x728-feature.jpg",
     "season": "Early summer",
     "description": "Edible and medicinal mushroom found on hardwoords, identified by its long white spines"
