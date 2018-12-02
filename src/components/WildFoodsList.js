@@ -10,14 +10,13 @@ export default function WildFoodsList(props) {
         position: "relative"
       }
       return (
-        <div className="plant-pic" key={food.name} style={wildFoodDivStyle}>
-          <h3>{food.name}</h3>
-          <button 
+        <div className="plant-pic" key={food.name} style={wildFoodDivStyle} onClick={() => displayModal(food.id)}>
+          <h3>{food.name.toUpperCase()}</h3>
+          <a 
             className="delete"
             onClick={() => deleteWildFoodFromServer(food.id)}>
             X
-          </button>
-          <button onClick={() => displayModal(food.id)}>SEE MORE</button>
+          </a>
           {/* <div className="edit">
             <input name="name" placeholder="Name" onChange={handleInputChange}></input>
             <input name="season" placeholder="season" onChange={handleInputChange}></input>

@@ -3,6 +3,7 @@ import axios from "axios";
 import WildFoodsList from "./components/WildFoodsList";
 import AddWildFood from "./components/AddWildFood";
 import Modal from "./components/Modal";
+import Header from "./components/Header";
 import './App.css';
 
 class App extends Component {
@@ -116,8 +117,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>MY WILD FOODS</h1>
-        <input placeholder="search" onChange={e => this.search(e.target.value)}></input>
+        <Header 
+          search={this.search}
+        />
         <Modal 
           show={showModal}
           hide={this.hideModal}
