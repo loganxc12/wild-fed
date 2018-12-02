@@ -127,10 +127,10 @@ class App extends Component {
           modalId={modalId}
         />
         <div className="wild-foods-container">{myWildFoods}</div>
-        <AddWildFood 
+        {/* <AddWildFood 
           handleInputChange={this.handleInputChange}
           postWildFoodToServer={this.postWildFoodToServer}
-        />
+        /> */}
       </div>
     );
   }
