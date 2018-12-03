@@ -1,14 +1,45 @@
-import React from "react";
+import React, { Component } from "react";
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css' 
 
-export default function WildFoodsList(props) {
-    const { wildFoods, handleInputChange, deleteWildFoodFromServer, updateWildFood, displayModal } = props;
-    const myWildFoods = wildFoods.map(food => {
+class WildFoodsList extends Component {
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        confirmDelete: false
+      }
+
+      this.submit = this.submit.bind(this);
+    }
+
+    submit(id) {
+      confirmAlert({
+        title: 'Confirm',
+        message: 'Are you sure you want to delete this wild food?',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => this.props.deleteWildFoodFromServer(id)
+          },
+          {
+            label: 'No',
+            onClick: () => console.log("clicked no")
+          }
+        ]
+      })
+    }
+
+    render() {
+      const { wildFoods, handleInputChange, deleteWildFoodFromServer, updateWildFood, displayModal } = this.props;
+      const myWildFoods = wildFoods.map(food => {
       let wildFoodDivStyle = {
-        background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url('${food.imageUrl}')`,
+        background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('${food.imageUrl}')`,
         backgroundSize: "cover",
         color: "white",
         position: "relative"
       }
+      
       return (
         <div className="plant-image-wrapper">
           <div className="plant-pic" key={food.name} style={wildFoodDivStyle} onClick={() => displayModal(food.id)}>
@@ -16,16 +47,18 @@ export default function WildFoodsList(props) {
           </div>
           <a 
               className="delete"
-              onClick={() => deleteWildFoodFromServer(food.id)}>
-              X
+              onClick={() => this.submit(food.id)}
+          > X
           </a>
         </div>
-          
-        
       )
     })
-    return myWildFoods;
+      return myWildFoods;
+    }
+
 }
+
+export default WildFoodsList;
 
 {/* <div className="edit">
             <input name="name" placeholder="Name" onChange={handleInputChange}></input>

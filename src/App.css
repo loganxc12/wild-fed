@@ -116,7 +116,7 @@
   border: 0 solid #02B148;
   border-bottom: 2px solid #fff;
   border-radius: 0;
-  background-color: #02B148
+  background-color: transparent;
 }
 
 .search::placeholder {
@@ -209,12 +209,13 @@
 /* ADD SCREEN */
 
 .add-screen {
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
   width:100%;
   height: 100%;
-  background: #02B148;
+  background: #02B148;;
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -223,12 +224,14 @@
 .add-screen-main {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   position:fixed;
   width: 70%;
-  height: 70vh;
-  top:50%;
+  height: 80%;
+  margin-top: -20px;
+  /* top:50%;
   left:50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%); */
   z-index: 1000;
   box-sizing: border-box;
 }
@@ -242,7 +245,8 @@
 }
 
 .add-screen-main button {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 0.04em;
   font-size: 22px;
   font-weight: 700;
   color: #fff;
@@ -250,8 +254,11 @@
   height: 70px;
   box-sizing: border-box;
   margin: 0 auto;
-  border: 4px solid #fff;
-  background-color: transparent;
+  margin-top: 25px;
+  border: 0;
+  border-bottom: 4px solid #05577A;
+  background-color: #096F9B;
+  cursor: pointer;
 }
 
 .add-input {
@@ -263,7 +270,7 @@
   border: 0 solid #02B148;
   border-bottom: 2px solid #fff;
   border-radius: 0;
-  background-color: #02B148
+  background-color: transparent;
 }
 
 .add-input::placeholder {
@@ -276,6 +283,15 @@
   outline: none;
 }
 
+.add-screen-close-btn {
+  position: absolute;
+  top: 40px;
+  right: 85px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 40px;
+  color: #fff;
+}
 /* MODAL */
 
 .modal {

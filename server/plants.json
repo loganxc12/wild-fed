@@ -6,22 +6,22 @@
     "scientificName": "Amelanchier spp.",
     "imageUrl": "http://www.uky.edu/ccd/sites/www.uky.edu.ccd/files/juneberry%2006hort004js226%20%28JGStrang%2C%20UK%29.JPG",
     "season": "Early summer",
-    "description": "Small tree bearing delicous berries with slight almond flavor"
+    "description": "Small tree bearing delicous berries with slight almond flavor."
     },
     { 
     "name": "Wild leek",
     "id": 1,
     "scientificName": "Allium tricoccum",
-    "imageUrl": "http://www.whiteoaknursery.biz/seed_prop/Allium_tricocum_plant.jpg",
+    "imageUrl": "https://joshfecteau.com/wp-content/uploads/2016/05/wildleeks.jpg",
     "season": "Mid spring",
-    "description": "Bright green herbaceous perrenial plant with delicious edible leaves and bulb"
+    "description": "Bright green herbaceous perrenial plant with delicious edible leaves and bulb."
     },
     { 
-    "name": "Lions mane",
+    "name": "Chicken of the woods",
     "id": 2,
-    "scientificName": "Hericium erinaceus",
-    "imageUrl": "https://www.healthline.com/hlcmsresource/images/AN_images/lions-mane-mushroom-1296x728-feature.jpg",
-    "season": "Early summer",
-    "description": "Edible and medicinal mushroom found on hardwoords, identified by its long white spines"
+    "scientificName": "Laetiporus spp.",
+    "imageUrl": "https://joshfecteau.com/wp-content/uploads/2012/09/chickenofthewoodstree.jpg",
+    "season": "Summer to fall",
+    "description": "Edible and medicinal mushroom found on hardwoords, identified by its bright orange color. Also called sulphur shelf."
     }
 ]

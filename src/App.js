@@ -14,11 +14,11 @@ class App extends Component {
 
     this.state = {
       wildFoods: [],
-      name: "",
-      scientificName: "",
-      season: "",
-      imageUrl: "",
-      description: "",
+      // name: "",
+      // scientificName: "",
+      // season: "",
+      // imageUrl: "",
+      // description: "",
       searchTerm: "",
       showModal: false,
       modalId: 0,
@@ -70,17 +70,11 @@ class App extends Component {
     })
   }
 
-  postWildFoodToServer() {
-    const newWildFood = {
-      name: this.state.name,
-      scientificName: this.state.scientificName,
-      season: this.state.season,
-      imageUrl: this.state.imageUrl,
-      description: this.state.description
-    }
+  postWildFoodToServer(newWildFood) {
     axios.post("/api/plants", newWildFood).then(response => {
       this.setState({
-        wildFoods: response.data
+        wildFoods: response.data,
+        showAddScreen: false
       })
     })
   }
@@ -118,7 +112,7 @@ class App extends Component {
   }
   
   render() {
-    const { wildFoods, showModal, modalId } = this.state;
+    const { wildFoods, showModal, modalId, showAddScreen } = this.state;
     const myWildFoods = wildFoods.length ? (
       <WildFoodsList 
         wildFoods={wildFoods} 
@@ -134,11 +128,12 @@ class App extends Component {
       <div className="App">
         <Header 
           search={this.search}
+          showAddScreen={this.showAddScreen}
         />
         <AddScreen 
-          showAddScreen={this.showAddScreen}
-          handleInputChange={this.handleInputChange}
-          postWildFoodToServer={this.postWildFoodToServer}
+          showAddScreen={showAddScreen}
+          hideAddScreen={this.hideAddScreen}
+          postNewFood={this.postWildFoodToServer}
         />
         <Modal 
           show={showModal}
@@ -147,10 +142,6 @@ class App extends Component {
           modalId={modalId}
         />
         <div className="wild-foods-container">{myWildFoods}</div>
-        {/* <AddWildFood 
-          handleInputChange={this.handleInputChange}
-          postWildFoodToServer={this.postWildFoodToServer}
-        /> */}
       </div>
     );
   }
