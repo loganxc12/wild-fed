@@ -24,7 +24,7 @@ class Modal extends Component {
     }
 
     toggle(e) {
-        console.log(e.target.name);
+        console.log(e.target);
         let toggleScientificNameState = this.state.toggleScientificName,
             toggleScientificNameInputState = this.state.toggleScientificNameInput,
             toggleSeasonState = this.state.toggleSeason,
@@ -34,28 +34,47 @@ class Modal extends Component {
             formNameState = this.state.formName;
         const currentId = e.target.id;
         const currentName = e.target.name;
-        if (currentId === "sciName" || currentName === "scientificName") {
+        console.log(currentName);
+        if (currentId === "sciName") {
             this.setState({
                 toggleScientificName: !toggleScientificNameState,
                 toggleScientificNameInput: !toggleScientificNameInputState
             })
-        } else if (currentId === "season" || currentName === "season") {
+        } else if (currentId === "season") {
             this.setState({
                 toggleSeason: !toggleSeasonState,
                 toggleSeasonInput: !toggleSeasonInputState
             })
-        } else if (currentId === "description" || currentName === "description") {
+        } else if (currentId === "description") {
             this.setState({
                 toggleDescription: !toggleDescriptionState,
                 toggleDescriptionInput: !toggleDescriptionInputState
             })
-        }   
-        
+        } else if (currentName === "scientificName") {
+            this.props.update(this.props.modalId)
+            this.setState({
+                toggleScientificName: !toggleScientificNameState,
+                toggleScientificNameInput: !toggleScientificNameInputState
+            })
+        } else if (currentName === "season") {
+            this.props.update(this.props.modalId)
+            this.setState({
+                toggleSeason: !toggleSeasonState,
+                toggleSeasonInput: !toggleSeasonInputState
+            })
+        } else if (currentName === "description") {
+            this.props.update(this.props.modalId)
+            this.setState({
+                toggleDescription: !toggleDescriptionState,
+                toggleDescriptionInput: !toggleDescriptionInputState
+            })
+        }  
     }
 
     render() {
+        console.log(this.props);
         const { toggleScientificName, toggleScientificNameInput, toggleSeason, toggleSeasonInput, toggleDescription, toggleDescriptionInput, formName } = this.state;
-        const { show, hide, wildFoods, modalId } = this.props;
+        const { show, hide, wildFoods, modalId, handleInputChange } = this.props;
         const showHideClassName = show ? "modal display-flex" : "modal display-none";
         const foodToDisplayInModal = wildFoods.filter(food => food.id === modalId)[0];
         const showSciNameEditClassName = toggleScientificName ? "edit-sci-name display-flex" : "edit-sci-name display-none";
@@ -77,15 +96,15 @@ class Modal extends Component {
                         <h2><strong>{foodToDisplayInModal.name.toUpperCase()}</strong></h2>
                         <div>
                            <strong>SCIENTIFIC NAME: </strong>  <span id="sciName" className={showSciNameEditClassName} onClick={this.toggle}>{foodToDisplayInModal.scientificName}</span>
-                            <input className={showSciNameInputClassName} name="scientificName" placeholder={foodToDisplayInModal.scientificName} onKeyUp={this.handleKeyPress}></input>
+                            <input className={showSciNameInputClassName} name="scientificName" placeholder={foodToDisplayInModal.scientificName} onChange={handleInputChange} onKeyUp={this.handleKeyPress}></input>
                         </div>
                         <div>
                             <strong>SEASON: </strong><span id="season" className={showSeasonEditClassName} onClick={this.toggle}>{foodToDisplayInModal.season}</span>
-                            <input className={showSeasonInputClassName} name="season" placeholder={foodToDisplayInModal.season} onKeyUp={this.handleKeyPress}></input>
+                            <input className={showSeasonInputClassName} name="season" placeholder={foodToDisplayInModal.season} onChange={handleInputChange} onKeyUp={this.handleKeyPress}></input>
                         </div>
                         <div>
                             <strong>DESCRIPTION: </strong> <span id="description" className={showDescriptionClassName} onClick={this.toggle}>{foodToDisplayInModal.description}</span>
-                            <input className={showDescriptionInputClassName} name="description" placeholder={foodToDisplayInModal.description} onKeyUp={this.handleKeyPress}></input>
+                            <input className={showDescriptionInputClassName} name="description" placeholder={foodToDisplayInModal.description} onChange={handleInputChange} onKeyUp={this.handleKeyPress}></input>
                         </div>
                     </div>
                 </section>

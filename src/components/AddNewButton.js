@@ -5,7 +5,7 @@ export default function AddNewButton(props) {
     return (
         <div className="add-btn" onClick={showAddScreen}>
             <img src={addButton}/>
-            ADD NEW
+            ADD TO LIST
         </div>
     )
 }

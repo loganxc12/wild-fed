@@ -14,15 +14,15 @@ class App extends Component {
 
     this.state = {
       wildFoods: [],
-      // name: "",
-      // scientificName: "",
-      // season: "",
-      // imageUrl: "",
-      // description: "",
+      name: "",
+      scientificName: "",
+      season: "",
+      imageUrl: "",
+      description: "",
       searchTerm: "",
       showModal: false,
       modalId: 0,
-      showAddScreen: false
+      showAddScreen: false, 
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.displayModal = this.displayModal.bind(this);
@@ -43,14 +43,22 @@ class App extends Component {
     })
   }
 
-  handleInputChange(e) {
-    this.setState({ [e.target.name] : e.target.value })
+  handleInputChange(e, id) {
+    console.log(e.target.id);
+    this.setState({ 
+      [e.target.name] : e.target.value     
+    })
   }
 
-  displayModal(id) {
+  displayModal(food) {
     this.setState({ 
       showModal: true,
-      modalId: id
+      modalId: food.id,
+      name: food.name,
+      scientificName: food.scientificName,
+      season: food.season,
+      imageUrl: food.imageUrl,
+      description: food.description
     });
   }
 
@@ -74,12 +82,17 @@ class App extends Component {
     axios.post("/api/plants", newWildFood).then(response => {
       this.setState({
         wildFoods: response.data,
-        showAddScreen: false
+        showAddScreen: false,
+        name: "",
+        scientificName: "",
+        season: "",
+        imageUrl: "",
+        description: ""
       })
     })
   }
 
-  updateWildFood(id) {
+    updateWildFood(id) {
     const updatedWildFood = {
       name: this.state.name, 
       scientificName: this.state.scientificName,
@@ -87,6 +100,7 @@ class App extends Component {
       imageUrl: this.state.imageUrl,
       description: this.state.description 
     }
+    console.log(updatedWildFood);
     axios.put(`/api/plants/${id}`, updatedWildFood).then(response => {
       this.setState({
         wildFoods: response.data
@@ -112,7 +126,8 @@ class App extends Component {
   }
   
   render() {
-    const { wildFoods, showModal, modalId, showAddScreen } = this.state;
+    console.log(this.state);
+    const { wildFoods, showModal, modalId, showAddScreen, name, scientificName, season, description, imageUrl } = this.state;
     const myWildFoods = wildFoods.length ? (
       <WildFoodsList 
         wildFoods={wildFoods} 
@@ -134,12 +149,20 @@ class App extends Component {
           showAddScreen={showAddScreen}
           hideAddScreen={this.hideAddScreen}
           postNewFood={this.postWildFoodToServer}
+          handleInputChange={this.handleInputChange}
+          name={name}
+          scientificName={scientificName}
+          season={season}
+          description={description}
+          imageUrl={imageUrl}
         />
         <Modal 
           show={showModal}
           hide={this.hideModal}
+          update={this.updateWildFood}
           wildFoods={wildFoods}
           modalId={modalId}
+          handleInputChange={this.handleInputChange}
         />
         <div className="wild-foods-container">{myWildFoods}</div>
       </div>

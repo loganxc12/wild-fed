@@ -42,7 +42,7 @@ class WildFoodsList extends Component {
       
       return (
         <div className="plant-image-wrapper">
-          <div className="plant-pic" key={food.name} style={wildFoodDivStyle} onClick={() => displayModal(food.id)}>
+          <div className="plant-pic" key={food.name} style={wildFoodDivStyle} onClick={() => displayModal(food)}>
             <h3>{food.name.toUpperCase()}</h3>
           </div>
           <a 
