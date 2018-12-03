@@ -10,22 +10,27 @@ export default function WildFoodsList(props) {
         position: "relative"
       }
       return (
-        <div className="plant-pic" key={food.name} style={wildFoodDivStyle} onClick={() => displayModal(food.id)}>
-          <h3>{food.name.toUpperCase()}</h3>
+        <div className="plant-image-wrapper">
+          <div className="plant-pic" key={food.name} style={wildFoodDivStyle} onClick={() => displayModal(food.id)}>
+            <h3>{food.name.toUpperCase()}</h3>
+          </div>
           <a 
-            className="delete"
-            onClick={() => deleteWildFoodFromServer(food.id)}>
-            X
+              className="delete"
+              onClick={() => deleteWildFoodFromServer(food.id)}>
+              X
           </a>
-          {/* <div className="edit">
+        </div>
+          
+        
+      )
+    })
+    return myWildFoods;
+}
+
+{/* <div className="edit">
             <input name="name" placeholder="Name" onChange={handleInputChange}></input>
             <input name="season" placeholder="season" onChange={handleInputChange}></input>
             <input name="imageUrl" placeholder="ImageUrl" onChange={handleInputChange}></input>
             <input name="description" placeholder="Description" onChange={handleInputChange}></input>
             <button onClick={() => updateWildFood(food.id)}>Update</button>
           </div> */}
-        </div>
-      )
-    })
-    return myWildFoods;
-}

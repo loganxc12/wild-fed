@@ -1,4 +1,5 @@
 import React from "react";
+import AddNewButton from "./AddNewButton";
 export default function Header(props) {
     
     return (
@@ -6,6 +7,7 @@ export default function Header(props) {
             <div className="nav-container">
                 <div className="hamburger-btn"></div>
                 <div className="logo-box"></div>
+                <AddNewButton />
             </div>
             <div className="dash-heading-container">
                 <h1>MY WILD FOODS</h1>

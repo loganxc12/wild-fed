@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import WildFoodsList from "./components/WildFoodsList";
+import AddScreen from "./components/AddScreen";
 import AddWildFood from "./components/AddWildFood";
 import Modal from "./components/Modal";
 import Header from "./components/Header";
@@ -20,11 +21,14 @@ class App extends Component {
       description: "",
       searchTerm: "",
       showModal: false,
-      modalId: 0
+      modalId: 0,
+      showAddScreen: false
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.displayModal = this.displayModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.showAddScreen = this.showAddScreen.bind(this);
+    this.hideAddScreen = this.hideAddScreen.bind(this);
     this.postWildFoodToServer = this.postWildFoodToServer.bind(this);
     this.deleteWildFoodFromServer = this.deleteWildFoodFromServer.bind(this);
     this.updateWildFood = this.updateWildFood.bind(this);
@@ -52,6 +56,18 @@ class App extends Component {
 
   hideModal() {
     this.setState({ showModal: false });
+  }
+
+  showAddScreen() {
+    this.setState({
+      showAddScreen: true
+    })
+  }
+
+  hideAddScreen() {
+    this.setState({
+      showAddScreen: false
+    })
   }
 
   postWildFoodToServer() {
@@ -85,7 +101,6 @@ class App extends Component {
   }
 
   deleteWildFoodFromServer(id) {
-    console.log(id);
     axios.delete(`/api/plants/${id}`).then(response => {
       this.setState({
         wildFoods: response.data
@@ -119,6 +134,11 @@ class App extends Component {
       <div className="App">
         <Header 
           search={this.search}
+        />
+        <AddScreen 
+          showAddScreen={this.showAddScreen}
+          handleInputChange={this.handleInputChange}
+          postWildFoodToServer={this.postWildFoodToServer}
         />
         <Modal 
           show={showModal}
